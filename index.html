@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Make It Rain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="content" class="container">
+
+    <div id="optionBar">
+
+      <button value="purple">
+        Purple Rain
+      </button>
+
+      <button value="snowflake">
+        Snowflakes
+      </button>
+
+      <button value="dog">
+        Dogs
+      </button>
+
+      <button value="angbao">
+        Angbao
+      </button>
+
+    </div>
+
+  </div>
+
+</body>
+
+<script>
+
+  var mr = setInterval(makeRain,2);
+
+  buttons = Array.from(document.querySelectorAll('button'));
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function(){
+      clearInterval(mr);
+      mr = setInterval(makeRain.bind(null,btn.value),2);
+    });
+  });
+
+  let lastY = 0;
+  // let counter = 0;
+  let height = window.innerHeight;
+
+  function makeRain(val){
+    // counter++;
+    let x = randomX();
+    let y = 0;
+    let speed = randomSpeed();
+
+    var rain = document.createElement("div");
+    rain.className = val;
+    rain.innerHTML = '&nbsp;';
+
+    rain.style.left = x+'px';
+    rain.style.top = -20+'px';
+
+    document.getElementById('content').appendChild(rain);
+    
+    // falling
+    var num = setInterval(function(){
+
+      let coords = rain.getBoundingClientRect();
+      lastY = coords.top;
+
+      rain.style.top = (lastY + speed) + 'px';
+
+      if(val == 'dog'){
+        
+        degree = 10;
+        
+        setInterval(function(){
+          rain.style.transform = `rotate(${degree}+'deg')`;
+          degree += 10;
+        }, 200);
+        
+      }
+
+      if(lastY >= height){
+        clearInterval(num);
+        rain.parentNode.removeChild(rain);
+
+      }
+
+    }, 25);
+  }
+
+
+
+  function randomSpeed(){
+    return Math.floor(Math.random() * (20-1) + 5);
+  }
+
+  function randomX(){
+    return Math.floor(Math.random() * (window.innerWidth-20) + 20);
+  }
+
+
+</script>
+
+
+</html>

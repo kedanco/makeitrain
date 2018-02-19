@@ -1,0 +1,61 @@
+html,body{
+  height: 100vh;
+}
+
+div.container{
+  height:100%;
+}
+
+
+body{
+  background-color: rgb(230,230,250);
+  overflow:hidden;
+}
+
+button, div#optionBar{
+  z-index:9999;
+}
+
+div#optionBar{
+  display:flex;
+  width:300px;
+  align-content: center;
+  margin:0px auto;
+  
+}
+
+button{
+  font-size:16px;
+  padding:10px;
+  margin:20px 10px;
+  display:inline-block;
+  
+}
+
+.purple{
+  position:absolute;
+  background-color: purple;
+  min-height:5px;
+  min-width:3px;
+}
+
+.snowflake{
+  position:absolute;
+  background-image: url('snowflake.png');
+  min-width:16px;
+  min-height:16px;
+}
+
+.dog{
+  position:absolute;
+  background-image: url('dog.png'); 
+  min-width:36px;
+  min-height:36px;
+}
+
+.angbao{
+  position:absolute;
+  background-image: url('red-packet.png');
+  min-width:16px;
+  min-height:26px;
+}
