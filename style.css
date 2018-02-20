@@ -35,8 +35,6 @@ button{
 .purple{
   position:absolute;
   background-color: purple;
-  min-height:5px;
-  min-width:3px;
 }
 
 .snowflake{
